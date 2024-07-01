@@ -1,0 +1,19 @@
+.msh-icon {
+  --msh-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--msh-icon-color);
+  font-size: inherit;
+}
+
+// 自定义type样式
+@each $val in primary, info, success, warning, danger {
+  // 当你挂上 .msh-icon--primary 类之后
+  // 你的 --msh-icon-color 这个变量的值就会变成 var(--msh-color-primary)
+  .msh-icon--#{$val} {
+    --msh-icon-color: var(--msh-color-#{$val});
+  }
+}
