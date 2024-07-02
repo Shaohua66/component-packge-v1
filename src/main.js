@@ -18,12 +18,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 // 引入自定义组件
 import Icon from './components/icons/Icon.vue'
+import Button from './components/button/Button.vue'
 
 const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 // 自定义组件注册
 app.component('msh-icon', Icon)
+app.component('msh-button', Button)
 
 app.use(router)
 

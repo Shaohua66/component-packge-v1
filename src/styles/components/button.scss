@@ -1,0 +1,130 @@
+// 首先针对这个样式类里面，定义了一系列的样式变量
+.msh-button {
+  --msh-button-font-weight: var(--msh-font-weight-primary);
+  --msh-button-border-color: var(--msh-border-color);
+  --msh-button-bg-color: var(--msh-fill-color-blank);
+  --msh-button-text-color: var(--msh-text-color-regular);
+  --msh-button-disabled-text-color: var(--msh-disabled-text-color);
+  --msh-button-disabled-bg-color: var(--msh-fill-color-blank);
+  --msh-button-disabled-border-color: var(--msh-border-color-light);
+  --msh-button-hover-text-color: var(--msh-color-primary);
+  --msh-button-hover-bg-color: var(--msh-color-primary-light-9);
+  --msh-button-hover-border-color: var(--msh-color-primary-light-7);
+  --msh-button-active-text-color: var(--msh-button-hover-text-color);
+  --msh-button-active-border-color: var(--msh-color-primary);
+  --msh-button-active-bg-color: var(--msh-button-hover-bg-color);
+  --msh-button-outline-color: var(--msh-color-primary-light-5);
+  --msh-button-active-color: var(--msh-text-color-primary);
+}
+
+.msh-button {
+  // 接下来再来书写基本的样式
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  height: 40px;
+  background-color: var(--msh-button-bg-color);
+  border: var(--msh-border);
+  border-color: var(--msh-button-border-color);
+  color: var(--msh-button-text-color);
+  appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: var(--msh-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  padding: 12px 20px;
+  font-size: var(--msh-font-size-base);
+  border-radius: var(--msh-border-radius-base);
+  &:hover,
+  &:focus {
+    color: var(--msh-button-hover-text-color);
+    border-color: var(--msh-button-hover-border-color);
+    background-color: var(--msh-button-hover-bg-color);
+    outline: none;
+  }
+  &:active {
+    color: var(--msh-button-active-text-color);
+    border-color: var(--msh-button-active-border-color);
+    background-color: var(--msh-button-active-bg-color);
+    outline: none;
+  }
+  &.is-round {
+    border-radius: var(--msh-border-radius-round);
+  }
+  &.is-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  // 禁用相关的样式
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--msh-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--msh-button-disabled-bg-color);
+    border-color: var(--msh-button-disabled-border-color);
+  }
+  [class*='msh-icon'] + span {
+    margin-left: 6px;
+    position: relative;
+    bottom: 2px;
+  }
+}
+
+@each $val in primary, success, warning, danger, info {
+  .msh-button--#{$val} {
+    --msh-button-text-color: var(--msh-color-white);
+    --msh-button-bg-color: var(--msh-color-#{$val});
+    --msh-button-border-color: var(--msh-color-#{$val});
+    --msh-button-outline-color: var(--msh-color-#{$val}-light-5);
+    --msh-button-active-color: var(--msh-color-#{$val}-dark-2);
+    --msh-button-hover-text-color: var(--msh-color-white);
+    --msh-button-hover-bg-color: var(--msh-color-#{$val}-light-3);
+    --msh-button-hover-border-color: var(--msh-color-#{$val}-light-3);
+    --msh-button-active-bg-color: var(--msh-color-#{$val}-dark-2);
+    --msh-button-active-border-color: var(--msh-color-#{$val}-dark-2);
+    --msh-button-disabled-text-color: var(--msh-color-white);
+    --msh-button-disabled-bg-color: var(--msh-color-#{$val}-light-5);
+    --msh-button-disabled-border-color: var(--msh-color-#{$val}-light-5);
+  }
+  // 如果挂了 is-plain 这个，那么同样是改变一些 CSS 变量的值
+  .msh-button--#{$val}.is-plain {
+    --msh-button-text-color: var(--msh-color-#{$val});
+    --msh-button-bg-color: var(--msh-color-#{$val}-light-9);
+    --msh-button-border-color: var(--msh-color-#{$val}-light-5);
+    --msh-button-hover-text-color: var(--msh-color-white);
+    --msh-button-hover-bg-color: var(--msh-color-#{$val});
+    --msh-button-hover-border-color: var(--msh-color-#{$val});
+    --msh-button-active-text-color: var(--msh-color-white);
+  }
+}
+
+// 针对 msh-button-large 以及 msh-button-small 书写相应的样式即可
+.msh-button--large {
+  --msh-button-size: 50px;
+  height: var(--msh-button-size);
+  padding: 12px 19px;
+  font-size: var(--msh-font-size-base);
+  border-radius: var(--msh-border-radius-base);
+}
+.msh-button--small {
+  --msh-button-size: 24px;
+  height: var(--msh-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--msh-border-radius-base) - 1px);
+}

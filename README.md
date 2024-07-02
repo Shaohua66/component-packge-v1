@@ -57,3 +57,21 @@ pnpm lint
 | spin-pulse   | spin-pulse动画   | Boolean          | 否       | 无     | 参照font awesome                                                                 |
 | type         | 主题类型         | String           | 否       | 无     | primary: #409eff,success: #67c23a,warning: #e6a23c,danger: #f56c6c,info: #909399 |
 | color        | 自定义颜色       | String           | 否       | 无     | 参照font awesome                                                                 |
+
+# Button 组件设计
+
+> 利用定义好的样式变量，设计按钮的样式，然后父组件传递不同的属性，button会挂上不同的样式类
+> 样式类中，不同的样式会修改原本样式的变量来达到修改的效果
+
+## 支持的属性
+
+| 属性名   | 作用       | 类型    | 是否必须 | 默认值       |
+| -------- | ---------- | ------- | -------- | ------------ |
+| type     | 主题颜色   | String  | 否       | default      |
+| size     | 大小       | String  | 否       | small/large  |
+| plain    | 是否朴素   | Boolean | 否       | false        |
+| round    | 是否圆角   | Boolean | 否       | false        |
+| circle   | 是否圆形   | Boolean | 否       | false        |
+| disabled | 是否禁用   | Boolean | 否       | false        |
+| loading  | 是否加载中 | Boolean | 否       | false        |
+| icon     | 图标       | String  | 否       | 参照icon组件 |
