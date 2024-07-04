@@ -23,6 +23,9 @@
 <script setup>
 import { ref } from 'vue'
 import propsObj from './props.js'
+defineOptions({
+  name: 'MshButton'
+})
 const props = defineProps(propsObj)
 const _ref = ref(null)
 defineExpose({ _ref })

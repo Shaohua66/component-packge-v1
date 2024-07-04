@@ -1,11 +1,36 @@
 {
-  "name": "component-packge-v1",
-  "version": "0.0.0",
+  "name": "msh-plus",
+  "version": "1.0.0",
   "private": true,
+  "discription": "this is a Vue3 component library that",
   "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "vue3",
+    "component",
+    "library"
+  ],
+  "files": [
+    "dist"
+  ],
+  "module": "dist/es/msh-plus.js",
+  "main": "dist/umd/msh-plus.umd.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/es/msh-plus.js",
+      "require": "./dist/umd/msh-plus.umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/umd/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "pnpm build-es && pnpm build-umd && pnpm move-style",
+    "build-es": "vite build --config vite.es.config.js",
+    "build-umd": "vite build --config vite.umd.config.js",
+    "move-style": "move-file dist/es/style.css dist/style.css",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -14,10 +39,11 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
-    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
+    "move-file-cli": "^3.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.29"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
@@ -28,6 +54,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "prettier": "^3.2.5",
     "sass": "^1.77.6",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vue-router": "^4.3.3"
   }
 }

@@ -9,7 +9,7 @@ import { computed } from 'vue'
 import propObj from './props.js'
 import { omit } from 'lodash-es'
 defineOptions({
-  name: 'Msh-Icon'
+  name: 'MshIcon'
 })
 const props = defineProps(propObj)
 // 我们使用 omit 可以将我们自定义的属性进行过滤
